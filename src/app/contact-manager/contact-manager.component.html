@@ -1,0 +1,98 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col">
+      <p class="h3">
+        Contact App
+        <a href="/contacts/add" class="btn btn-success btn-sm"
+          ><i class="fa fa-plus-circle">&nbsp;</i>Add Contact</a
+        >
+      </p>
+      <p class="fst-italic mt-1">
+        this my content dummy content Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Vero laborum, magnam dolor facilis adipisci, incidunt,
+        cupiditate eum in temporibus beatae excepturi rem earum. Reprehenderit,
+        magni! Nulla est pariatur libero quis? Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit. Dolorum officia sunt ut, est deleniti modi
+        laudantium odio ab repudiandae sapiente velit maxime dicta soluta fugit
+        asperiores dolore saepe ducimus magnam.
+      </p>
+      <form action="">
+        <div class="row">
+          <div class="col-md-6">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="search contact"
+            />
+          </div>
+          <div class="col-md-6">
+            <input type="submit" class="btn btn-primary" value="search" />
+          </div>
+          <div class="col md-6"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- <pre>{{ contacts | json }}</pre> -->
+<!-- conditon based loading -->
+<div *ngIf="loading">
+  <app-spinner></app-spinner>
+</div>
+<!-- display errorloading -->
+<div *ngIf="!loading && errorMessage">
+  <div class="row">
+    <div class="col">
+      <p class="h4 text-danger fw-bold">{{ errorMessage }}</p>
+    </div>
+  </div>
+</div>
+<!-- card content -->
+<div class="container mt-4" *ngIf="!loading && contacts.length > 0">
+  <div class="row">
+    <div class="col-md-6" *ngFor="let contact of contacts">
+      <div class="card list-group-item-success my-2">
+        <div class="card-body">
+          <div class="row align-item-center">
+            <div class="col-sm-4">
+              <img [src]="contact.photo" alt="user" class="contact-img" />
+            </div>
+            <div class="col-sm-6">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  Name : <span class="fw-bold">{{ contact.name }}</span>
+                </li>
+                <li class="list-group-item">
+                  Email : <span class="fw-bold">{{ contact.email }}</span>
+                </li>
+                <li class="list-group-item">
+                  Mobile : <span class="fw-bold">{{ contact.mobile }}</span>
+                </li>
+              </ul>
+            </div>
+            <div class="col-sm-1">
+              <a
+                routerLink="/contacts/view/{{ contact.id }}"
+                class="btn btn-warning"
+                ><i class="fa fa-eye"></i
+              ></a>
+              &nbsp;
+              <a
+                routerLink="/contacts/edit/{{ contact.id }}"
+                class="btn btn-success"
+                ><i class="fa fa-pencil-square"></i
+              ></a>
+              &nbsp;
+              <button
+                class="btn btn-danger"
+                (click)="deleteContact(contact.id)"
+              >
+                <i class="fa fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

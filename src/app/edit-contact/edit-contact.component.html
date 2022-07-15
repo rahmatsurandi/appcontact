@@ -1,0 +1,115 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col">
+      <p class="h3 fw-bold text-primary">
+        <i class="fa fa-pencil-square">&nbsp;</i> Edit contact
+      </p>
+      <p class="fst-italic mt-1">
+        this my content dummy content Lorem ipsum dolor sit amet consectetur,
+        adipisicing elit. Vero laborum, magnam dolor facilis adipisci, incidunt,
+        cupiditate eum in temporibus beatae excepturi rem earum. Reprehenderit,
+        magni! Nulla est pariatur libero quis? Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit. Dolorum officia sunt ut, est deleniti modi
+        laudantium odio ab repudiandae sapiente velit maxime dicta soluta fugit
+        asperiores dolore saepe ducimus magnam.
+      </p>
+    </div>
+  </div>
+</div>
+<!-- edit contact form -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <form (submit)="submitUpdate()">
+        <div class="mb-2">
+          <input
+            [(ngModel)]="contact.name"
+            [value]="contact.name"
+            name="name"
+            type="text"
+            class="form-control"
+            placeholder="Name"
+            required
+          />
+        </div>
+        <div class="mb-2">
+          <input
+            [(ngModel)]="contact.photo"
+            [value]="contact.photo"
+            name="photo"
+            type="text"
+            class="form-control"
+            placeholder="Photo url"
+            required
+          />
+        </div>
+        <div class="mb-2">
+          <input
+            [(ngModel)]="contact.email"
+            [value]="contact.email"
+            name="email"
+            type="text"
+            class="form-control"
+            placeholder="Email Id"
+            required
+          />
+        </div>
+        <div class="mb-2">
+          <input
+            [(ngModel)]="contact.mobile"
+            [value]="contact.mobile"
+            name="mobile"
+            type="text"
+            class="form-control"
+            placeholder="Mobile"
+            required
+          />
+        </div>
+        <div class="mb-2">
+          <input
+            [(ngModel)]="contact.company"
+            [value]="contact.company"
+            name="company"
+            type="text"
+            class="form-control"
+            placeholder="Company"
+            required
+          />
+        </div>
+        <div class="mb-2">
+          <input
+            [(ngModel)]="contact.title"
+            [value]="contact.title"
+            name="title"
+            type="text"
+            class="form-control"
+            placeholder="Title"
+            required
+          />
+        </div>
+        <div class="mb-2">
+          <select
+            [(ngModel)]="contact.groupId"
+            [value]="contact.groupId"
+            name="groupId"
+            class="form-control"
+            required
+          >
+            <option value="">select a group</option>
+            <option [value]="group.id" *ngFor="let group of groupp">
+              {{ group.name }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-2">
+          <input type="submit" class="btn btn-primary" value="Update" />
+          <a routerLink="/" class="btn btn-warning ms-2">Close</a>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-4">
+      <img [src]="contact.photo" class="contact-img" />
+    </div>
+  </div>
+</div>
